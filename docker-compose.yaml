@@ -1,0 +1,13 @@
+version: '2.4'
+services:
+  docker-registry:
+    restart: always
+    image: registry:2
+    ports:
+      - 5555:5000
+    environment:
+      - REGISTRY_PROXY_REMOTEURL="https://registry-1.docker.io" 
+    volumes:
+      - .docker/registry:/var/lib/registry
+      - .docker/certs:/certs
+      - .docker/auth:/auth
